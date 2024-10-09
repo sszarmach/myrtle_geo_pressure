@@ -1,46 +1,101 @@
 default:
   #-- SET MAP
-  extent: !expr c(-16, 23, 0, 50)
+  extent: !expr c(-160, -70, 20, 67)
   scale: 5
-  include_min_duration: 12
+  include_min_duration: 24
   #-- GEOPRESSURE
-  max_sample: 250
+  max_sample: 200
   margin: 20
   sd: 1
   thr_mask: 0.9
-  # log_linear_pooling_weight:
+  # log_linear_pooling_weight:S
   #-- GEOLIGHT
   # twl_thr:
-  twl_offset: 0
-  # twl_calib_adjust:
+  twl_offset: 10
+  #twl_calib_adjust:
   # twl_llp:
   #-- GRAPH
   thr_likelihood: 0.99
   thr_gs: 150
   thr_as: 90
   #-- MOVEMENT MODEL
-  movement_shape:
-  movement_scale:
+  method: "gamma"
+  movement_shape: 7
+  movement_scale: 7
   movement_location:
   movement_low_speed_fix: 15
+  scientific_name: "Setophaga coronata"
 
-18LX:
-  id: "18LX"
-  crop_start: "2017-06-20"
-  crop_end: "2018-05-02"
-  known: !expr data.frame(stap_id = 1,
-                    known_lon = 17.05,
-                    known_lat = 48.9)
+CG179:
+  id: "CG179"
+  crop_start: "2022-06-05"
+  crop_end: "2023-06-11"
+  known: !expr data.frame(stap_id = c(1, 35),
+                    known_lon = c(-149.74, -149.74),
+                    known_lat = c(61.15, 61.15))
+  #-- GEOLIGHT
+  twl_offset: 10
+  #-- MOVEMENT MODEL
+  movement_type: "gs"
+
+CG181:
+  id: "CG181"
+  crop_start: "2022-06-04"
+  crop_end: "2023-06-01"
+  known: !expr data.frame(stap_id = c(1, 31),
+                    known_lon = c(-149.75, -149.75),
+                    known_lat = c(61.16, 61.16))
   #-- GEOLIGHT
   # twl_offset:
   #-- MOVEMENT MODEL
-  movement_type: "as"
-  scientific_name: "Acrocephalus arundinaceus"
-
-PlKS:
-  id: "PlKS"
-  crop_start:
-  crop_end: formals(tag_create)$crop_end
+  movement_type: "gs"
+  
+CG193:
+  id: "CG193"
+  crop_start: "2022-06-16"
+  crop_end: "2023-06-11"
+  known: !expr data.frame(stap_id = c(1, 32),
+                    known_lon = c(-149.78, -149.78),
+                    known_lat = c(61.17, 61.17))
+  #-- GEOLIGHT
+  # twl_offset:
   #-- MOVEMENT MODEL
-  movement_type: "as"
-  # movement_method:
+  movement_type: "gs"
+
+CG194:
+  id: "CG194"
+  crop_start: "2022-06-07"
+  crop_end: "2023-06-05"
+  known: !expr data.frame(stap_id = c(1, 37),
+
+                    known_lon = c(-149.72, -149.72),
+                    known_lat = c(61.16, 61.16))
+  #-- GEOLIGHT
+  # twl_offset:
+  #-- MOVEMENT MODEL
+  movement_type: "gs"
+  
+CG206:
+  id: "CG206"
+  crop_start: "2022-06-15"
+  crop_end: "2023-06-09"
+  known: !expr data.frame(stap_id = c(1, 39),
+                    known_lon = c(-149.79, -149.79),
+                    known_lat = c(61.16, 61.16))
+  include_min_duration: 
+  #-- GEOLIGHT
+  # twl_offset:
+  #-- MOVEMENT MODEL
+  movement_type: "gs"
+     
+CG207:
+  id: "CG207"
+  crop_start: "2022-06-12"
+  crop_end: "2023-06-06"
+  known: !expr data.frame(stap_id = c(1, 34),
+                    known_lon = c(-149.78, -149.78),
+                    known_lat = c(61.16, 61.16))
+  #-- GEOLIGHT
+  # twl_offset:
+  #-- MOVEMENT MODEL
+  movement_type: "gs"

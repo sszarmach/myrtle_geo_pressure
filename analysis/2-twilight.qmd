@@ -4,25 +4,9 @@ format: html
 editor: visual
 ---
 
-This script walk you through the labeling of twilight and creation of the light map.
-
-::: callout-tip
-*Delete this block when you have read!*
-
-**If you don't have light data, delete this file!**
-
--   The script is meant to be adapted according to your needs, so feel free to delete or modify: you can still check [the original version online]().
--   At the same time, keep this file general to all your tags.
--   It is assume that you have followed the GeoPressureManual entirely. Make sure you have done that!
--   In particular, the instruction on how to understand the output of this script and what do are provided in [the labeling instruction of the GeoPressureManual]().
--   The script is not meant to be run with "Run all". Use the "play" button of each chunk to run the script line-by-line.
--   Nothing is saved at the end of the script and it is meant to be like that. Only label file and config.yml should be edited. Use `geopressure.R` for the final run.
-
-:::
-
 ```{r, setup}
 # Choose the id 
-id <- "18LX"
+id <- "CG181"
 
 # Set the directory to the project root
 knitr::opts_knit$set(root.dir = "..")
@@ -36,7 +20,7 @@ library(glue)
 Start from an existing `tag`
 
 ```{r}
-load(glue("./data/interim/{id}.RData"))
+load(glue("/Users/sjs7465/Documents/GitHub/myrtle_geo_pressure/data/interim/pressure_only/{id}.RData"))
 ```
 
 or generate from a new ones
@@ -71,13 +55,13 @@ plot(tag, type = "twilight")
 ## Annotate twilight
 
 ```{r}
-twilight_label_write(tag)
+twilight_label_write(tag, file=glue::glue("/Users/sjs7465/Documents/GitHub/myrtle_geo_pressure/data/twilight-label/{tag$param$id}.csv"))
 ```
 
 Read and check the twilight annotation
 
 ```{r}
-tag <- twilight_label_read(tag)
+tag <- twilight_label_read(tag, file=glue::glue("/Users/sjs7465/Documents/GitHub/myrtle_geo_pressure/data/twilight-label/{tag$param$id}-labeled.csv"))
 plot(tag, type = "twilight")
 ```
 
